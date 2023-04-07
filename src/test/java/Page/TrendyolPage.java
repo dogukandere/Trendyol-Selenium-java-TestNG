@@ -75,7 +75,7 @@ public class TrendyolPage extends ReusableMethods {
     }
 
     public void closePopup(){
-        popup.click();
+        Click(popup);
     }
 
     public void categoryHoverOver(){
