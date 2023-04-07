@@ -85,33 +85,25 @@ public class TrendyolPage extends ReusableMethods {
     public void logoTitleLinkControl(){
         Assert.assertEquals(driver.getTitle(),"En Trend Ürünler Türkiye'nin Online Alışveriş Sitesi Trendyol'da");
         Assert.assertEquals(driver.getCurrentUrl(),"https://www.trendyol.com/");
-        waitUntilElementIsVisible(logo,10);
-        Assert.assertTrue(logo.isDisplayed());
-        waitUntilElementIsVisible(logo2,10);
-        Assert.assertTrue(logo2.isDisplayed());
+        isDisplayed(logo);
+        isDisplayed(logo2);
     }
 
-    public void search(String urun){
-        waitUntilElementIsVisible(searchBox,10);
-        searchBox.sendKeys(urun);
-        waitUntilElementIsClickable(searchButton,10);
-        searchButton.click();
+    public void search(){
+        SendKeys(searchBox,"iphone 14");
+        Click(searchButton);
         scrollDown(300);
     }
 
     public void productClick(){
-        waitUntilElementIsClickable(popup2,10);
-        popup2.click();
+        Click(popup2);
     }
 
     public void memorySelectandAddtoCart(){
-        waitUntilElementIsClickable(memoryElement,10);
-        memoryElement.click();
+        Click(memoryElement);
         scrollDown(300);
-        waitUntilElementIsClickable(cartElement,10);
-        cartElement.click();
-        waitUntilElementIsVisible(goToCartElement,10);
-        goToCartElement.click();
+        Click(cartElement);
+        Click(goToCartElement);
     }
 
     public void isProductOnTheCart(){
@@ -119,22 +111,18 @@ public class TrendyolPage extends ReusableMethods {
     }
 
     public void isTrashButtonClickable(){
-        Assert.assertTrue(trashElement.isDisplayed());
-        Assert.assertTrue(trashElement.isEnabled());
+        isClickable(trashElement);
     }
 
     public void isDiscountButtonClickable(){
-        Assert.assertTrue(discountElement.isDisplayed());
-        Assert.assertTrue(discountElement.isEnabled());
+        isClickable(discountElement);
     }
 
     public void isShopButtonClickable(){
-        Assert.assertTrue(shopButton.isDisplayed());
-        Assert.assertTrue(shopButton.isEnabled());
+        isClickable(shopButton);
     }
 
     public void buying(){
-        waitUntilElementIsVisible(button,10);
-        button.click();
+        Click(button);
     }
 }
