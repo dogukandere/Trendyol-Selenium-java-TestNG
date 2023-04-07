@@ -14,7 +14,7 @@ public class TrendyolTest extends TestBase {
         trendyolPage.closePopup();
         trendyolPage.categoryHoverOver();
         trendyolPage.logoTitleLinkControl();
-        trendyolPage.search("iphone 14");
+        trendyolPage.search();
         trendyolPage.productClick();
         trendyolPage.switchToTab();
         trendyolPage.memorySelectandAddtoCart();
@@ -30,4 +30,5 @@ public class TrendyolTest extends TestBase {
         trendyolPage.isShopButtonClickable();
     }
 }
+
 
