@@ -205,7 +205,7 @@ public class ReusableMethods {
         Assert.assertTrue(element.isEnabled());
     }
     
-    public void Click(WebElement element){
+    public void click(WebElement element){
         waitUntilElementIsClickable(element,10);
         element.click();
     }
