@@ -155,18 +155,6 @@ public class ReusableMethods {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public void Click(WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
-    }
-
-    public void SendKeys(WebElement element, String value){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(element));
-        element.sendKeys(value);
-    }
-
     public void dragToElement(WebElement element, WebElement element2){
         Actions action = new Actions(driver);
         action.dragAndDrop(element,element2).build().perform();
@@ -215,6 +203,16 @@ public class ReusableMethods {
     public void isClickable(WebElement element){
         waitUntilElementIsVisible(element,10);
         Assert.assertTrue(element.isEnabled());
+    }
+    
+    public void Click(WebElement element){
+        waitUntilElementIsClickable(element,10);
+        element.click();
+    }
+
+    public void SendKeys(WebElement element, String value){
+        waitUntilElementIsVisible(element,10);
+        element.sendKeys(value);
     }
 
 }
