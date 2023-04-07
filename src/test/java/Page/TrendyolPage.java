@@ -75,7 +75,7 @@ public class TrendyolPage extends ReusableMethods {
     }
 
     public void closePopup(){
-        Click(popup);
+        click(popup);
     }
 
     public void categoryHoverOver(){
@@ -91,19 +91,19 @@ public class TrendyolPage extends ReusableMethods {
 
     public void search(){
         SendKeys(searchBox,"iphone 14");
-        Click(searchButton);
+        click(searchButton);
         scrollDown(300);
     }
 
     public void productClick(){
-        Click(popup2);
+        click(popup2);
     }
 
     public void memorySelectandAddtoCart(){
-        Click(memoryElement);
+        click(memoryElement);
         scrollDown(300);
-        Click(cartElement);
-        Click(goToCartElement);
+        click(cartElement);
+        click(goToCartElement);
     }
 
     public void isProductOnTheCart(){
@@ -123,6 +123,6 @@ public class TrendyolPage extends ReusableMethods {
     }
 
     public void buying(){
-        Click(button);
+        click(button);
     }
 }
