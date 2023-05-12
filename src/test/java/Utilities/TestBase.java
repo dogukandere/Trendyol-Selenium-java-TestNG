@@ -19,6 +19,7 @@ public abstract class TestBase {
         driver= new ChromeDriver();
         driver.manage().window().maximize();
     }
+
     @AfterClass
     public void After(){
 

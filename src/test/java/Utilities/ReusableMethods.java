@@ -32,13 +32,13 @@ public class ReusableMethods {
     public void rightClick(WebElement element){
 
         Actions action = new Actions(driver);
-        action.contextClick(element).perform(); //mouse right click
+        action.contextClick(element).perform();
     }
 
     public void doubleClick(WebElement element){
 
         Actions action = new Actions(driver);
-        action.doubleClick(element).perform(); //mouse left click
+        action.doubleClick(element).perform();
     }
 
     public void screenShot() throws IOException {
@@ -118,7 +118,7 @@ public class ReusableMethods {
         }
     }
 
-    public ReusableMethods switchToWindow2(String targetTitle) {
+    public ReusableMethods switchToWindow(String targetTitle) {
 
         String origin = driver.getWindowHandle();
         for (String handle : driver.getWindowHandles()) {
@@ -211,8 +211,10 @@ public class ReusableMethods {
         }
     }
 
-    public void copyPasteText(WebElement element, WebElement element2){
+    public void copyPasteText(String xpath1, String xpath2){
 
+        WebElement element = driver.findElement(By.xpath(xpath1));
+        WebElement element2 = driver.findElement(By.xpath(xpath2));
         element.sendKeys(Keys.COMMAND + "a");
         element.sendKeys(Keys.COMMAND + "c");
         element2.sendKeys(Keys.COMMAND + "v");
