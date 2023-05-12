@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 import java.util.List;
 
@@ -17,112 +16,108 @@ public class TrendyolPage extends ReusableMethods {
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
-    @FindBy(xpath = "//*[@id=\"onetrust-accept-btn-handler\"]")
-    private WebElement popup;
 
-    @FindBy(xpath = "//img[@alt='Trendyol']")
-    private WebElement logo;
-
-    @FindBy(xpath = "//p[contains(text(),'Giriş Yap')]")
-    private WebElement logo2;
-
-    @FindBy(xpath = "//*[@id=\"sfx-discovery-search-suggestions\"]/div/div/input")
-    private WebElement searchBox;
-
-    @FindBy(xpath = "//i[@class='cyrzo7gC']")
-    private WebElement searchButton;
-
-    @FindBy(xpath = "//*[@id=\"search-app\"]/div/div[1]/div[2]/div[3]/div[1]/div/div[1]/div[1]/a/div[3]/div[2]/p[2]")
-    private WebElement popup2;
-
-    @FindBy(xpath = "//span[@title='iPhone 14 Pro Max 128GB Uzay Siyahı']")
-    private WebElement product;
-
-    @FindBy(xpath = "//div[normalize-space()='1 TB']")
-    private WebElement memoryElement;
-
-    @FindBy(xpath = "//div[@class='add-to-basket-button-text']")
-    private WebElement cartElement;
-
-    @FindBy(xpath = "//a[@class='goBasket']")
-    private WebElement goToCartElement;
-
-    @FindBy(xpath = "//button[contains(text(),'Anladım')]")
-    private WebElement button;
-
-    @FindBy(xpath = "//div[@class='pb-summary']//div[1]//a[1]//span[1]")
-    private WebElement button2;
+    private final String POPUP = "//*[@id=\"onetrust-accept-btn-handler\"]";
+    private final String TRENDYOL_LOGO = "//img[@alt='Trendyol']";
+    private final String LOGIN_LOGO = "//p[contains(text(),'Giriş Yap')]";
+    private final String SEARCH_BOX_ELEMENT = "//*[@id=\"sfx-discovery-search-suggestions\"]/div/div/input";
+    private final String SEARCH_BUTTON_ELEMENT = "//i[@class='cyrzo7gC']";
+    private final String PRODUCT_ELEMENT = "//span[@title='Lf27t350fhrxuf 27\" 5ms 1920x1080 Vga/hdmı Full Hd Siyah Led Monıtor']";
+    private final String CART_ELEMENT = "//div[@class='add-to-basket-button-text']";
+    private final String GO_TO_CART_ELEMENT = "//a[@class='goBasket']";
+    private final String HEADER_ELEMENT = "//div[@class='pb-header']";
+    private final String TRASH_ELEMENT = "//i[@class='i-trash']";
+    private final String DISCOUNT_ELEMENT = "//span[@class='add-coupon-toggle-title']";
+    private final String SHOP_BUTTON_ELEMENT = "//div[@class='pb-summary']//div[1]//a[1]//span[1]";
+    private final String BUTTON_ELEMENT = "//button[contains(text(),'Anladım')]";
 
     @FindBy(className = "category-header")
-    private List<WebElement> hoverElement;
+    private List<WebElement> HOVER_ELEMENT;
 
-    @FindBy(xpath = "//div[@class='pb-header']")
-    private WebElement headerElement;
+    public void navigateToUrl(String url){
 
-    @FindBy(xpath = "//i[@class='i-trash']")
-    private WebElement trashElement;
-
-    @FindBy(xpath = "//span[@class='add-coupon-toggle-title']")
-    private WebElement discountElement;
-
-    @FindBy(xpath = "//div[@class='pb-summary']//div[1]//a[1]//span[1]")
-    private WebElement shopButton;
-
-
-    public void navigateToUrl(){
-        driver.navigate().to("https://www.trendyol.com/");
-        waitFor(3);
+        driver.navigate().to(url);
     }
 
-    public void closePopup(){
-        click(popup);
+    public TrendyolPage closePopup(){
+
+        waitFor(2);
+        click(POPUP);
+        return this;
     }
 
-    public void categoryHoverOver(){
-        hoverOverMenu(hoverElement);
+    public TrendyolPage categoryHoverOver(){
+
+        hoverOverMenu(HOVER_ELEMENT);
+        return this;
     }
 
-    public void logoTitleLinkControl(){
-        Assert.assertEquals(driver.getTitle(),"En Trend Ürünler Türkiye'nin Online Alışveriş Sitesi Trendyol'da");
-        Assert.assertEquals(driver.getCurrentUrl(),"https://www.trendyol.com/");
-        isDisplayed(logo);
-        isDisplayed(logo2);
+    public boolean trendyolLogoControl(){
+
+        return isDisplayed(TRENDYOL_LOGO);
     }
 
-    public void search(){
-        SendKeys(searchBox,"iphone 14");
-        click(searchButton);
+    public boolean loginLogoControl(){
+
+        return isDisplayed(LOGIN_LOGO);
+    }
+
+    public TrendyolPage searchProduct(String product){
+
+        sendKeys(SEARCH_BOX_ELEMENT,product);
+        return this;
+    }
+
+    public TrendyolPage clickSearchButton(){
+
+        click(SEARCH_BUTTON_ELEMENT);
         scrollDown(300);
+        return this;
     }
 
-    public void productClick(){
-        click(popup2);
+    public TrendyolPage clickProduct(){
+
+        click(PRODUCT_ELEMENT);
+        return this;
     }
 
-    public void memorySelectandAddtoCart(){
-        click(memoryElement);
-        scrollDown(300);
-        click(cartElement);
-        click(goToCartElement);
+    public TrendyolPage clickCartElement(){
+
+        click(CART_ELEMENT);
+        waitFor(2);
+        return this;
     }
 
-    public void isProductOnTheCart(){
-        Assert.assertEquals(headerElement.getText(),"Sepetim (1 Ürün)");
+    public TrendyolPage clickGoToCartElement(){
+
+        click(GO_TO_CART_ELEMENT);
+        waitFor(2);
+        return this;
     }
 
-    public void isTrashButtonClickable(){
-        isClickable(trashElement);
+    public TrendyolPage clickBuyingElement(){
+
+        click(BUTTON_ELEMENT);
+        return this;
     }
 
-    public void isDiscountButtonClickable(){
-        isClickable(discountElement);
+    public String isProductOnTheCart(){
+
+        return getTextOfElement(HEADER_ELEMENT);
     }
 
-    public void isShopButtonClickable(){
-        isClickable(shopButton);
+    public boolean isTrashButtonClickable(){
+
+        return isClickable(TRASH_ELEMENT);
     }
 
-    public void buying(){
-        click(button);
+    public boolean isDiscountButtonClickable(){
+
+        return isClickable(DISCOUNT_ELEMENT);
+    }
+
+    public boolean isShopButtonClickable(){
+
+        return isClickable(SHOP_BUTTON_ELEMENT);
     }
 }
