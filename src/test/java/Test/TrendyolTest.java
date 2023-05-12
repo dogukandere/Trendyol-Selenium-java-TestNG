@@ -31,8 +31,8 @@ public class TrendyolTest extends TestBase {
         trendyolPage.closePopup().categoryHoverOver();
         Assert.assertEquals(driver.getTitle(),"En Trend Ürünler Türkiye'nin Online Alışveriş Sitesi Trendyol'da");
         Assert.assertEquals(driver.getCurrentUrl(),"https://www.trendyol.com/");
-        trendyolPage.trendyolLogoControl();
-        trendyolPage.loginLogoControl();
+        Assert.assertTrue(trendyolPage.trendyolLogoControl());
+        Assert.assertTrue(trendyolPage.loginLogoControl());
         trendyolPage.searchProduct("samsung monitör").clickSearchButton();
 
         productListPage.clickProduct();
@@ -46,9 +46,9 @@ public class TrendyolTest extends TestBase {
 
         buyingPage.clickBuyingElement();
         Assert.assertEquals(buyingPage.isProductOnTheCart(),"Sepetim (1 Ürün)");
-        buyingPage.isTrashButtonClickable();
-        buyingPage.isDiscountButtonClickable();
-        buyingPage.isShopButtonClickable();
+        Assert.assertTrue(buyingPage.isTrashButtonClickable());
+        Assert.assertTrue(buyingPage.isDiscountButtonClickable());
+        Assert.assertTrue(buyingPage.isShopButtonClickable());
     }
 }
 
