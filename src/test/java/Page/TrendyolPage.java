@@ -1,6 +1,7 @@
 package Page;
 
 import Utilities.ReusableMethods;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,14 +17,12 @@ public class TrendyolPage extends ReusableMethods {
         PageFactory.initElements(driver,this);
     }
 
-    private final String POPUP = "//*[@id=\"onetrust-accept-btn-handler\"]";
-    private final String TRENDYOL_LOGO = "//img[@alt='Trendyol']";
-    private final String LOGIN_LOGO = "//p[contains(text(),'Giriş Yap')]";
-    private final String SEARCH_BOX_ELEMENT = "//*[@id=\"sfx-discovery-search-suggestions\"]/div/div/input";
-    private final String SEARCH_BUTTON_ELEMENT = "//i[@class='cyrzo7gC']";
-
-    @FindBy(className = "category-header")
-    private List<WebElement> HOVER_ELEMENT;
+    private final By POPUP = By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]");
+    private final By TRENDYOL_LOGO = By.xpath("//img[@alt='Trendyol']");
+    private final By LOGIN_LOGO = By.xpath("//p[contains(text(),'Giriş Yap')]");
+    private final By SEARCH_BOX_ELEMENT = By.xpath("//*[@id=\"sfx-discovery-search-suggestions\"]/div/div/input");
+    private final By SEARCH_BUTTON_ELEMENT = By.xpath("//i[@class='cyrzo7gC']");
+    private final By HOVER_ELEMENT = By.className("category-header");
 
     public void navigateToUrl(String url){
 

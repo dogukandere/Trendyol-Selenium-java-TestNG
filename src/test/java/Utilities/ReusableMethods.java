@@ -75,10 +75,12 @@ public class ReusableMethods {
         actions.moveToElement(element).perform();
     }
 
-    public void hoverOverMenu(List<WebElement> list){
 
+    public void hoverOverMenu(By classname){
+
+        List<WebElement> element1 = driver.findElements(classname);
         Actions action = new Actions(driver);
-        for(WebElement menüler:list ){
+        for(WebElement menüler:element1 ){
             action.moveToElement(menüler).perform();
             waitFor(1);
             System.out.println(menüler.getText());
@@ -211,44 +213,42 @@ public class ReusableMethods {
         }
     }
 
-    public void copyPasteText(String xpath1, String xpath2){
+    public void copyPasteText(By xpath1, By xpath2){
 
-        WebElement element = driver.findElement(By.xpath(xpath1));
-        WebElement element2 = driver.findElement(By.xpath(xpath2));
+        WebElement element = driver.findElement(xpath1);
+        WebElement element2 = driver.findElement(xpath2);
         element.sendKeys(Keys.COMMAND + "a");
         element.sendKeys(Keys.COMMAND + "c");
         element2.sendKeys(Keys.COMMAND + "v");
     }
 
-    public boolean isDisplayed(String xpath){
-
-        WebElement element = driver.findElement(By.xpath(xpath));
+    public boolean isDisplayed(By xpath){
+        WebElement element = driver.findElement(xpath);
         waitUntilElementIsVisible(element,10);
         return element.isDisplayed();
     }
 
-    public boolean isClickable(String xpath){
-
-        WebElement element = driver.findElement(By.xpath(xpath));
+    public boolean isClickable(By xpath){
+        WebElement element = driver.findElement(xpath);
         return element.isEnabled();
     }
 
-    public void sendKeys(String xpath, String value){
+    public void click(By xpath){
 
-        WebElement element = driver.findElement(By.xpath(xpath));
+        WebElement element = driver.findElement(xpath);
+        waitUntilElementIsClickable(element,20);
+        element.click();
+    }
+
+    public void sendKeys(By xpath, String value){
+
+        WebElement element = driver.findElement(xpath);
         waitUntilElementIsVisible(element,10);
         element.sendKeys(value);
     }
 
-    public void click(String xpath){
+    protected String getTextOfElement(By xpath) {
 
-        WebElement element = driver.findElement(By.xpath(xpath));
-        waitUntilElementIsVisible(element,10);
-        element.click();
-    }
-
-    protected String getTextOfElement(String xpath) {
-
-        return driver.findElement(By.xpath(xpath)).getText();
+        return driver.findElement(xpath).getText();
     }
 }

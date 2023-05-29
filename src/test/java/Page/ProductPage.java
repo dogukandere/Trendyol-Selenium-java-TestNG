@@ -1,6 +1,7 @@
 package Page;
 
 import Utilities.ReusableMethods;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -14,8 +15,8 @@ public class ProductPage extends ReusableMethods {
         PageFactory.initElements(driver,this);
     }
 
-    private final String CART_ELEMENT = "//div[@class='add-to-basket-button-text']";
-    private final String GO_TO_CART_ELEMENT = "//a[@class='goBasket']";
+    private final By CART_ELEMENT = By.xpath("//div[@class='add-to-basket-button-text']");
+    private final By GO_TO_CART_ELEMENT = By.xpath("//a[@class='goBasket']");
 
     public ProductPage clickCartElement(){
 

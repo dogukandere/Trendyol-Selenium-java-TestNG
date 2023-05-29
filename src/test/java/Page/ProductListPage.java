@@ -1,6 +1,7 @@
 package Page;
 
 import Utilities.ReusableMethods;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -13,7 +14,7 @@ public class ProductListPage extends ReusableMethods {
         PageFactory.initElements(driver,this);
     }
 
-    private final String PRODUCT_ELEMENT = "//span[@title='Lf27t350fhrxuf 27\" 5ms 1920x1080 Vga/hdmı Full Hd Siyah Led Monıtor']";
+    private final By PRODUCT_ELEMENT = By.xpath("//span[@title='Lf27t350fhrxuf 27\" 5ms 1920x1080 Vga/hdmı Full Hd Siyah Led Monıtor']");
 
     public ProductListPage clickProduct(){
 
