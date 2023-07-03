@@ -14,7 +14,7 @@ public class ProductListPage extends ReusableMethods {
         PageFactory.initElements(driver,this);
     }
 
-    private final By PRODUCT_ELEMENT = By.xpath("//span[@title='Lf27t350fhrxuf 27\" 5ms 1920x1080 Vga/hdmı Full Hd Siyah Led Monıtor']");
+    private static final By PRODUCT_ELEMENT = By.xpath("//span[@title='Lf27t350fhrxuf 27\" 5ms 1920x1080 Vga/hdmı Full Hd Siyah Led Monıtor']");
 
     public ProductListPage clickProduct(){
 

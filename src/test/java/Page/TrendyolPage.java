@@ -17,12 +17,12 @@ public class TrendyolPage extends ReusableMethods {
         PageFactory.initElements(driver,this);
     }
 
-    private final By POPUP = By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]");
-    private final By TRENDYOL_LOGO = By.xpath("//img[@alt='Trendyol']");
-    private final By LOGIN_LOGO = By.xpath("//p[contains(text(),'Giriş Yap')]");
-    private final By SEARCH_BOX_ELEMENT = By.xpath("//*[@id=\"sfx-discovery-search-suggestions\"]/div/div/input");
-    private final By SEARCH_BUTTON_ELEMENT = By.xpath("//i[@class='cyrzo7gC']");
-    private final By HOVER_ELEMENT = By.className("category-header");
+    private static final By POPUP = By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]");
+    private static final By TRENDYOL_LOGO = By.xpath("//img[@alt='Trendyol']");
+    private static final By LOGIN_LOGO = By.xpath("//p[contains(text(),'Giriş Yap')]");
+    private static final By SEARCH_BOX_ELEMENT = By.xpath("//*[@id=\"sfx-discovery-search-suggestions\"]/div/div/input");
+    private static final By SEARCH_BUTTON_ELEMENT = By.xpath("//i[@class='cyrzo7gC']");
+    private static final By HOVER_ELEMENT = By.className("category-header");
 
     public void navigateToUrl(String url){
 
