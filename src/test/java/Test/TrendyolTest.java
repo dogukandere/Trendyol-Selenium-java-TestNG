@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class TrendyolTest extends TestBase {
+
     TrendyolPage trendyolPage;
     ProductPage productPage;
     ProductListPage productListPage;

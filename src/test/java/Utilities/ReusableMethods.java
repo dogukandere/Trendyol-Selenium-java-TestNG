@@ -75,7 +75,6 @@ public class ReusableMethods {
         actions.moveToElement(element).perform();
     }
 
-
     public void hoverOverMenu(By classname){
 
         List<WebElement> element1 = driver.findElements(classname);
@@ -224,7 +223,7 @@ public class ReusableMethods {
 
     public boolean isDisplayed(By by){
         WebElement element = driver.findElement(by);
-        waitUntilElementIsVisible(element,10);
+        waitUntilElementIsVisible(element,20);
         return element.isDisplayed();
     }
 
@@ -243,7 +242,7 @@ public class ReusableMethods {
     public void sendKeys(By by, String value){
 
         WebElement element = driver.findElement(by);
-        waitUntilElementIsVisible(element,10);
+        waitUntilElementIsVisible(element,20);
         element.sendKeys(value);
     }
 

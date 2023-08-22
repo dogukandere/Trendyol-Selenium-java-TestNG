@@ -12,7 +12,6 @@ public class BuyingPage extends ReusableMethods {
     public BuyingPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
-        PageFactory.initElements(driver,this);
     }
 
     private static final By HEADER_ELEMENT = By.xpath("//div[@class='pb-header']");
