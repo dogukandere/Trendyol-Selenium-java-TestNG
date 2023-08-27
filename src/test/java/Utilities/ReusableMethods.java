@@ -184,12 +184,6 @@ public class ReusableMethods {
         return this;
     }
 
-    public void elementContains(WebElement element, String word){
-
-        String x= element.getText();
-        Assert.assertTrue(word.contains(x));
-    }
-
     public void findAllLinks(){
 
         List<WebElement> links = driver.findElements(By.tagName("a"));
