@@ -5,7 +5,7 @@ import Page.ProductListPage;
 import Page.ProductPage;
 import Page.TrendyolPage;
 import Utilities.DriverFactory;
-import org.testng.Assert;
+import static org.testng.Assert.*;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -33,10 +33,10 @@ public class TrendyolTest {
 
         driver.navigate().to("https://www.trendyol.com/");
         trendyolPage.closePopup().categoryHoverOver();
-        Assert.assertEquals(driver.getTitle(),"En Trend Ürünler Türkiye'nin Online Alışveriş Sitesi Trendyol'da");
-        Assert.assertEquals(driver.getCurrentUrl(),"https://www.trendyol.com/");
-        Assert.assertTrue(trendyolPage.trendyolLogoControl());
-        Assert.assertTrue(trendyolPage.loginLogoControl());
+        assertEquals(driver.getTitle(),"En Trend Ürünler Türkiye'nin Online Alışveriş Sitesi Trendyol'da");
+        assertEquals(driver.getCurrentUrl(),"https://www.trendyol.com/");
+        assertTrue(trendyolPage.trendyolLogoControl());
+        assertTrue(trendyolPage.loginLogoControl());
         trendyolPage.searchProduct("samsung monitör").clickSearchButton();
 
         productListPage.clickProduct();
@@ -49,10 +49,10 @@ public class TrendyolTest {
     public void checkProduct(){
 
         buyingPage.clickBuyingElement();
-        Assert.assertEquals(buyingPage.isProductOnTheCart(),"Sepetim (1 Ürün)");
-        Assert.assertTrue(buyingPage.isTrashButtonClickable());
-        Assert.assertTrue(buyingPage.isDiscountButtonClickable());
-        Assert.assertTrue(buyingPage.isShopButtonClickable());
+        assertEquals(buyingPage.isProductOnTheCart(),"Sepetim (1 Ürün)");
+        assertTrue(buyingPage.isTrashButtonClickable());
+        assertTrue(buyingPage.isDiscountButtonClickable());
+        assertTrue(buyingPage.isShopButtonClickable());
     }
 }
 
