@@ -2,17 +2,8 @@ package Page;
 
 import Utilities.ReusableMethods;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public class BuyingPage extends ReusableMethods {
-
-    WebDriver driver;
-
-    public BuyingPage(WebDriver driver) {
-        super(driver);
-        this.driver = driver;
-    }
 
     private static final By HEADER_ELEMENT = By.xpath("//div[@class='pb-header']");
     private static final By TRASH_ELEMENT = By.xpath("//i[@class='i-trash']");

@@ -7,14 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ProductPage extends ReusableMethods {
 
-    WebDriver driver;
-
-    public ProductPage(WebDriver driver) {
-
-        super(driver);
-        this.driver = driver;
-    }
-
     private static final By ADD_TO_CART_ELEMENT = By.xpath("//div[@class='add-to-basket-button-text']");
     private static final By GO_TO_CART_ELEMENT = By.xpath("//a[@class='goBasket']");
 

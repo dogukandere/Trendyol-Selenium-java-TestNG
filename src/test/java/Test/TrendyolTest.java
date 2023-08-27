@@ -4,31 +4,34 @@ import Page.BuyingPage;
 import Page.ProductListPage;
 import Page.ProductPage;
 import Page.TrendyolPage;
-import Utilities.TestBase;
+import Utilities.DriverFactory;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class TrendyolTest extends TestBase {
+import static Utilities.DriverFactory.driver;
 
-    TrendyolPage trendyolPage;
-    ProductPage productPage;
-    ProductListPage productListPage;
-    BuyingPage buyingPage;
+public class TrendyolTest {
 
-    @BeforeClass
+    private static TrendyolPage trendyolPage;
+    private static ProductPage productPage;
+    private static ProductListPage productListPage;
+    private static BuyingPage buyingPage;
+
+    @BeforeTest
     public void before(){
 
-        trendyolPage = new TrendyolPage(driver);
-        productPage = new ProductPage(driver);
-        productListPage = new ProductListPage(driver);
-        buyingPage = new BuyingPage(driver);
+        DriverFactory.getDriver();
+        trendyolPage = new TrendyolPage();
+        productPage = new ProductPage();
+        productListPage = new ProductListPage();
+        buyingPage = new BuyingPage();
     }
 
     @Test(priority = 1 , description = "Search product and add to cart")
     public void searchProduct(){
 
-        trendyolPage.navigateToUrl("https://www.trendyol.com/");
+        driver.navigate().to("https://www.trendyol.com/");
         trendyolPage.closePopup().categoryHoverOver();
         Assert.assertEquals(driver.getTitle(),"En Trend Ürünler Türkiye'nin Online Alışveriş Sitesi Trendyol'da");
         Assert.assertEquals(driver.getCurrentUrl(),"https://www.trendyol.com/");

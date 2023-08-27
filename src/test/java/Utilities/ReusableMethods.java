@@ -13,21 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import static Utilities.DriverFactory.driver;
 import static java.lang.Math.abs;
 
 public class ReusableMethods {
-    WebDriver driver;
-    WebDriverWait wait;
-
-    public ReusableMethods(WebDriverWait wait) {
-
-        this.wait = wait;
-    }
-
-    public ReusableMethods(WebDriver driver) {
-
-        this.driver = driver;
-    }
 
     public void rightClick(WebElement element){
 

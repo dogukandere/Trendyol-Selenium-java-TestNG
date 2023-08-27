@@ -7,24 +7,12 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TrendyolPage extends ReusableMethods {
 
-    WebDriver driver;
-
-    public TrendyolPage(WebDriver driver) {
-        super(driver);
-        this.driver = driver;
-    }
-
     private static final By POPUP = By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]");
     private static final By TRENDYOL_LOGO = By.xpath("//img[@alt='Trendyol']");
     private static final By LOGIN_LOGO = By.xpath("//p[contains(text(),'Giriş Yap')]");
     private static final By SEARCH_BOX_ELEMENT = By.xpath("//*[@id=\"sfx-discovery-search-suggestions\"]/div/div/input");
     private static final By SEARCH_BUTTON = By.xpath("//i[@class='cyrzo7gC']");
     private static final By HOVER_ELEMENT = By.className("category-header");
-
-    public void navigateToUrl(String url){
-
-        driver.navigate().to(url);
-    }
 
     public TrendyolPage closePopup(){
 
