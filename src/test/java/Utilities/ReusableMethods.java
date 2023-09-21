@@ -4,7 +4,6 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
-import org.testng.Assert;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,25 +18,21 @@ import static java.lang.Math.abs;
 public class ReusableMethods {
 
     public void rightClick(WebElement element){
-
         Actions action = new Actions(driver);
         action.contextClick(element).perform();
     }
 
     public void doubleClick(WebElement element){
-
         Actions action = new Actions(driver);
         action.doubleClick(element).perform();
     }
 
     public void screenShot() throws IOException {
-
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(scrFile, new File("/Users/dogukandere/Downloads/batch30-POM-main/src/SS/dddd.jpg"));
     }
 
     public ReusableMethods waitFor(int sec) {
-
         try {
             Thread.sleep(sec * 1000);
         } catch (InterruptedException e) {
@@ -47,25 +42,21 @@ public class ReusableMethods {
     }
 
     public void scrollDown(int pixels) {
-
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("window.scrollBy(0, " + abs(pixels) + ");", "");
     }
 
     public void scrollIntoView(WebElement element) {
-
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("arguments[0].scrollIntoView(false);", element);
     }
 
     public void hover(WebElement element) {
-
         Actions actions = new Actions(driver);
         actions.moveToElement(element).perform();
     }
 
     public void hoverOverMenu(By classname){
-
         List<WebElement> element1 = driver.findElements(classname);
         Actions action = new Actions(driver);
         for(WebElement menüler:element1 ){
@@ -92,7 +83,6 @@ public class ReusableMethods {
     public void deleteCookies(){driver.manage().deleteAllCookies(); }
 
     public void findAllCookies(){
-
         Set <Cookie> cookies = driver.manage().getCookies();
         for(Cookie cookie:cookies){
             System.out.println(cookie.getName()+":"+cookie.getValue());
@@ -101,7 +91,6 @@ public class ReusableMethods {
     }
 
     public void switchToTab(){
-
         Set<String> tabs = driver.getWindowHandles(); //Used to switch to a new tab that opens
         for(String actual: tabs) {
             driver.switchTo().window(actual);
@@ -109,7 +98,6 @@ public class ReusableMethods {
     }
 
     public ReusableMethods switchToWindow(String targetTitle) {
-
         String origin = driver.getWindowHandle();
         for (String handle : driver.getWindowHandles()) {
             driver.switchTo().window(handle);
@@ -122,59 +110,49 @@ public class ReusableMethods {
     }
 
     public void dropDownSelectByValue(WebElement element,String value){
-
         Select Value = new Select(element);
         Value.selectByValue(value);
     }
 
     public void dropDownSelectByIndex(WebElement element,int value){
-
         Select index = new Select(element);
         index.selectByIndex(value);
     }
 
     public void dropDownSelectByText(WebElement element,String value){
-
         Select VisibleText = new Select (element);
         VisibleText.selectByVisibleText(value);
     }
 
     public void getElementSize(WebElement element){
-
         System.out.println(element.getSize());
     }
 
     public void getElementLocation(WebElement element){
-
         System.out.println(element.getLocation());
     }
 
     public void waitUntilElementIsVisible(WebElement element , int time){
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public void waitUntilElementIsClickable(WebElement element , int time){
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public void dragToElement(WebElement element, WebElement element2){
-
         Actions action = new Actions(driver);
         action.dragAndDrop(element,element2).build().perform();
     }
 
     public void dragThisCoordinate(WebElement element, int x, int y){
-
         Actions action = new Actions(driver);
         action.dragAndDropBy(element,x,y).perform();
     }
 
     public ReusableMethods getElementsText(List<WebElement> list){
-
         List<String> elemTexts = new ArrayList<>();
         for (WebElement el : list) {
             if (!el.getText().isEmpty()) {
@@ -185,7 +163,6 @@ public class ReusableMethods {
     }
 
     public void findAllLinks(){
-
         List<WebElement> links = driver.findElements(By.tagName("a"));
         System.out.println("Total link number "+ links.size());
         for(int i=0;i<links.size();i++)
@@ -196,7 +173,6 @@ public class ReusableMethods {
     }
 
     public void copyPasteText(By by1, By by2){
-
         WebElement element = driver.findElement(by1);
         WebElement element2 = driver.findElement(by2);
         element.sendKeys(Keys.COMMAND + "a");
@@ -223,14 +199,12 @@ public class ReusableMethods {
     }
 
     public void sendKeys(By by, String value){
-
         WebElement element = driver.findElement(by);
         waitUntilElementIsVisible(element,20);
         element.sendKeys(value);
     }
 
     protected String getTextOfElement(By by) {
-
         return driver.findElement(by).getText();
     }
 }

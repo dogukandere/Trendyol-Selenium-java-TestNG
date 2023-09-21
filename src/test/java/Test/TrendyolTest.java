@@ -20,7 +20,6 @@ public class TrendyolTest {
 
     @BeforeTest
     public void before(){
-
         DriverFactory.getDriver();
         trendyolPage = new TrendyolPage();
         productPage = new ProductPage();
@@ -30,7 +29,6 @@ public class TrendyolTest {
 
     @Test(priority = 1 , description = "Search product and add to cart")
     public void searchProduct(){
-
         driver.navigate().to("https://www.trendyol.com/");
         trendyolPage.closePopup().categoryHoverOver();
         assertEquals(driver.getTitle(),"En Trend Ürünler Türkiye'nin Online Alışveriş Sitesi Trendyol'da");
@@ -47,7 +45,6 @@ public class TrendyolTest {
 
     @Test(priority = 2 , description = "Verify Product and Buttons")
     public void checkProduct(){
-
         buyingPage.clickBuyingElement();
         assertEquals(buyingPage.isProductOnTheCart(),"Sepetim (1 Ürün)");
         assertTrue(buyingPage.isTrashButtonClickable());

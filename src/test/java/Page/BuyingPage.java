@@ -12,28 +12,23 @@ public class BuyingPage extends ReusableMethods {
     private static final By UNDERSTAND_POPUP = By.xpath("//button[contains(text(),'Anladım')]");
 
     public BuyingPage clickBuyingElement(){
-
         click(UNDERSTAND_POPUP);
         return this;
     }
 
     public String isProductOnTheCart(){
-
         return getTextOfElement(HEADER_ELEMENT);
     }
 
     public boolean isTrashButtonClickable(){
-
         return isClickable(TRASH_ELEMENT);
     }
 
     public boolean isDiscountButtonClickable(){
-
         return isClickable(DISCOUNT_ELEMENT);
     }
 
     public boolean isShopButtonClickable(){
-
         return isClickable(SHOP_BUTTON_ELEMENT);
     }
 }

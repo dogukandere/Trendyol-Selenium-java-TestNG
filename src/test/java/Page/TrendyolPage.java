@@ -2,8 +2,6 @@ package Page;
 
 import Utilities.ReusableMethods;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 
 public class TrendyolPage extends ReusableMethods {
 
@@ -15,35 +13,29 @@ public class TrendyolPage extends ReusableMethods {
     private static final By HOVER_ELEMENT = By.className("category-header");
 
     public TrendyolPage closePopup(){
-
         click(POPUP);
         return this;
     }
 
     public TrendyolPage categoryHoverOver(){
-
         hoverOverMenu(HOVER_ELEMENT);
         return this;
     }
 
     public boolean trendyolLogoControl(){
-
         return isDisplayed(TRENDYOL_LOGO);
     }
 
     public boolean loginLogoControl(){
-
         return isDisplayed(LOGIN_LOGO);
     }
 
     public TrendyolPage searchProduct(String product){
-
         sendKeys(SEARCH_BOX_ELEMENT,product);
         return this;
     }
 
     public TrendyolPage clickSearchButton(){
-
         click(SEARCH_BUTTON);
         scrollDown(300);
         return this;
