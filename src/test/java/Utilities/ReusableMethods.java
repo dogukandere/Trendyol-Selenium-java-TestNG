@@ -192,7 +192,6 @@ public class ReusableMethods {
     }
 
     public void click(By by){
-
         WebElement element = driver.findElement(by);
         waitUntilElementIsClickable(element,20);
         element.click();
