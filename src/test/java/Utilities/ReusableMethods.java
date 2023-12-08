@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
+import org.testng.Assert;
 
 import java.io.File;
 import java.io.IOException;
@@ -59,10 +60,10 @@ public class ReusableMethods {
     public void hoverOverMenu(By classname){
         List<WebElement> element1 = driver.findElements(classname);
         Actions action = new Actions(driver);
-        for(WebElement menüler:element1 ){
-            action.moveToElement(menüler).perform();
+        for(WebElement menus :element1 ){
+            action.moveToElement(menus).perform();
             waitFor(1);
-            System.out.println(menüler.getText());
+            System.out.println(menus.getText());
         }
     }
 
@@ -142,13 +143,16 @@ public class ReusableMethods {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public void dragToElement(WebElement element, WebElement element2){
+    public void dragToElement(By by1, By by2){
         Actions action = new Actions(driver);
-        action.dragAndDrop(element,element2).build().perform();
+        WebElement element1 = driver.findElement(by1);
+        WebElement element2 = driver.findElement(by2);
+        action.dragAndDrop(element1,element2).build().perform();
     }
 
-    public void dragThisCoordinate(WebElement element, int x, int y){
+    public void dragThisCoordinate(By by, int x, int y){
         Actions action = new Actions(driver);
+        WebElement element = driver.findElement(by);
         action.dragAndDropBy(element,x,y).perform();
     }
 
@@ -160,6 +164,11 @@ public class ReusableMethods {
             }
         }
         return this;
+    }
+
+    public void elementContains(WebElement element, String word){
+        String x= element.getText();
+        Assert.assertTrue(word.contains(x));
     }
 
     public void findAllLinks(){
@@ -182,8 +191,17 @@ public class ReusableMethods {
 
     public boolean isDisplayed(By by){
         WebElement element = driver.findElement(by);
-        waitUntilElementIsVisible(element,20);
         return element.isDisplayed();
+    }
+
+    public boolean isElementDisplayed(By by){
+        try{
+            WebElement element = driver.findElement(by);
+            return element.isDisplayed();
+        }
+        catch (Exception e){
+            return false;
+        }
     }
 
     public boolean isClickable(By by){
@@ -193,17 +211,79 @@ public class ReusableMethods {
 
     public void click(By by){
         WebElement element = driver.findElement(by);
-        waitUntilElementIsClickable(element,20);
         element.click();
     }
 
     public void sendKeys(By by, String value){
         WebElement element = driver.findElement(by);
-        waitUntilElementIsVisible(element,20);
         element.sendKeys(value);
+    }
+
+    public void sendNumber(By key, int number){
+        driver.findElement(key).sendKeys(String.valueOf(number));
+    }
+
+    public void sendNumber2(By by, int number){
+        Actions action = new Actions(driver);
+        WebElement element = driver.findElement(by);
+        action.sendKeys(String.valueOf(number)).perform();
     }
 
     protected String getTextOfElement(By by) {
         return driver.findElement(by).getText();
+    }
+
+    public void checkText(By key , String text){
+        if (!driver.findElement(key).getText().equals(text)) {
+            Assert.fail("The text on the expected screen is incorrect.");
+        }
+    }
+
+    public ReusableMethods clearElement(By by){
+        WebElement element = driver.findElement(by);
+        element.clear();
+        return this;
+    }
+
+    public ReusableMethods checkElementNotExist(By by){
+        try{
+            if (isDisplayed(by)){
+                Assert.fail("Element displayed");
+            }
+        }
+        catch (Exception e){
+            Assert.assertTrue(true);
+        }
+        return this;
+    }
+
+    public void holdTheElement(By by){
+        Actions action = new Actions(driver);
+        WebElement element = driver.findElement(by);
+        action.clickAndHold(element).perform();
+    }
+
+    public void releaseTheElement(By by){
+        Actions action = new Actions(driver);
+        WebElement element = driver.findElement(by);
+        action.release(element).perform();
+    }
+
+    public void holdAndRelease(By by, int time){
+        Actions action = new Actions(driver);
+        WebElement element = driver.findElement(by);
+        action.clickAndHold(element).perform();
+        waitFor(time);
+        action.release(element).perform();
+    }
+
+    public int getNumberOfElements(By locator) {
+        List<WebElement> elements = driver.findElements(locator);
+        return elements.size();
+    }
+
+    public ReusableMethods acceptAlert (){
+        driver.switchTo().alert().accept();
+        return this;
     }
 }
